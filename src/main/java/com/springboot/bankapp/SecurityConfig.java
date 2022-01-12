@@ -1,4 +1,5 @@
 package com.springboot.bankapp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +17,12 @@ import com.springboot.bankapp.service.MyUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter
 {
+
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
 	
 	@Bean
-	public PasswordEncoder getPasswordEncoder() 
+	public PasswordEncoder getPasswordEncoder()
 	{
 		 PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
 		 return passwordEncoder;
@@ -38,6 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 		http.authorizeRequests()
 		 .antMatchers("/customer").permitAll()
 		 .antMatchers("/user").authenticated()
+		 .antMatchers("/transfer").authenticated()
 		 .anyRequest()
 		 .permitAll()
 		 .and()
