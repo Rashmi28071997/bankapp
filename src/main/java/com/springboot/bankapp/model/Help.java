@@ -14,9 +14,8 @@ public class Help {
 	private Long Id;
 	
 	private String question;
-	
-	@Column(length = 2000)
 	private String answer;
+	@Column(length = 2000)
 
 	public Long getId() {
 		return Id;
